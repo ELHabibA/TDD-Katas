@@ -12,7 +12,7 @@ namespace Katas_TDD.YatzyKata
 
           YatzyKata Game = new YatzyKata();
 
-          Game.roll(1, 1); //0
+          Game.roll(1, 1);
           Game.roll(1, 1);
           Game.roll(1, 1);
           Game.roll(1, 1);
