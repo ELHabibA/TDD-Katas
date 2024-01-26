@@ -9,6 +9,8 @@ namespace Katas_TDD.YatzyKata
     int[]  ScoreList = new int[30];
     int[]  TotalScoreList = new int[6];
 
+    int UppersectionScore = 0;
+
     int [] choosenDice = new int[30];
 
     int counter1 = 0;
@@ -47,6 +49,11 @@ namespace Katas_TDD.YatzyKata
 
            counter3 += 5;
            counter += 5;
+
+           if(counter == 30 && result >= 63){
+
+            result += 35;
+           }
          }
            
           return result;

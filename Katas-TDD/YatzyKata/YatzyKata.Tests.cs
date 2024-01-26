@@ -98,7 +98,7 @@ namespace Katas_TDD.YatzyKata
 
         [Theory]
        [InlineData(4, 5, 6, 3, 1, 2)]
-        public void When_PlayerGetsScore63OrMore_PlayerGetsBonus50(int decision1, int decision2, int decision3,  int decision4, int decision5, int decision6)
+        public void When_PlayerGetsScore63OrMore_PlayerGetsBonus35(int decision1, int decision2, int decision3,  int decision4, int decision5, int decision6)
         {
 
           YatzyKata Game = new YatzyKata();
@@ -149,7 +149,7 @@ namespace Katas_TDD.YatzyKata
          
             
 
-            Assert.Equal(113,  Game.score());
+            Assert.Equal(98,  Game.score());
 
         }
 
