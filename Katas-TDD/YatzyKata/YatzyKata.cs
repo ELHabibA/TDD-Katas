@@ -7,49 +7,47 @@ namespace Katas_TDD.YatzyKata
 {
        
     int[]  ScoreList = new int[30];
-    int[]  TotalScoreList = new int[6];
-
-    int UppersectionScore = 0;
-
-    int [] choosenDice = new int[30];
-
+    public Queue<eChoosen>? eChoosenQueue = null; 
     int counter1 = 0;
-    int counter3 = 0;
 
-        public void roll(int points, int choosenDice)
+    public enum eChoosen {
+    ones = 1, twos, threes, fours, five, six, fhreeOfaKind, fourOfaKind, fullHouse, smStraight, lgStraight, yahtzee, chance
+    }
+        public void roll(int points)
         {
          
           ScoreList[counter1] = points;
-
-     
-          
-          this.choosenDice[counter1] = choosenDice;
-
-         
-          
           counter1++;
         }
 
         public int score(){
+          
+          if(eChoosenQueue == null){
+              
+              return -1;
 
+          }
            int result = 0;
            int counter = 0;
          
          while(counter < ScoreList.Length){
 
+            if (eChoosenQueue.Count == 0)
+            {
+                break; // Exit the loop if the queue is empty
+            }
+
           for(int i = 0; i < 5; i++) {
 
-            if(ScoreList[counter + i] == choosenDice[counter3]){
+            if(ScoreList[counter + i] == (int)eChoosenQueue.Peek()){
 
               result += ScoreList[counter + i];
             }
                
            }
 
-
-           counter3 += 5;
            counter += 5;
-
+           eChoosenQueue.Dequeue();
            if(counter == 30 && result >= 63){
 
             result += 35;
@@ -60,34 +58,6 @@ namespace Katas_TDD.YatzyKata
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public int totalScore(){
-
-         int result = 0;
-
-           for(int i = 0; i < ScoreList.Length; i++) {
-
-              result += TotalScoreList[i];
-            
-               
-           }
-
-          return result;
-        }
 
 
 }
