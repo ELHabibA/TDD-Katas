@@ -14,11 +14,8 @@ namespace Katas_TDD.MarsRoverKata
 
          public MarsRoverKata(string startingPoistion, string[] obs)
          {
-
             _startingPoistion = startingPoistion;
             _obstacles = obs;
-
-
          }
 
 

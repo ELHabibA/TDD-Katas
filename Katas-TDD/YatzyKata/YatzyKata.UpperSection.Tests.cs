@@ -3,7 +3,7 @@
 namespace Katas_TDD.YatzyKata
 
 {
-    public class YatzyKataTests
+    public class YatzyKataUpperSectionTests
 
     {
         [Fact]
@@ -17,10 +17,8 @@ namespace Katas_TDD.YatzyKata
           Game.roll(1);
           Game.roll(1);
           Game.roll(5);
-          Game.eChoosenQueue = new Queue<YatzyKata.eChoosen>();
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)1);
-
-            
+          Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)1);
 
             Assert.Equal(4, Game.score());
 
@@ -54,8 +52,8 @@ namespace Katas_TDD.YatzyKata
           Game.roll(4);
           Game.roll(5);
           
-          Game.eChoosenQueue = new Queue<YatzyKata.eChoosen>();
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)2);
+          Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)2);
           
 
           Assert.Equal(6, Game.score());
@@ -74,8 +72,8 @@ namespace Katas_TDD.YatzyKata
           Game.roll(3);
           Game.roll(5);
            
-          Game.eChoosenQueue = new Queue<YatzyKata.eChoosen>();
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)3);
+          Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)3);
           
 
           Assert.Equal(6, Game.score());
@@ -95,8 +93,8 @@ namespace Katas_TDD.YatzyKata
           Game.roll(3);
           Game.roll(5);
 
-          Game.eChoosenQueue = new Queue<YatzyKata.eChoosen>();
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)2);
+          Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)2);
           
 
         //2
@@ -105,10 +103,51 @@ namespace Katas_TDD.YatzyKata
           Game.roll(3);
           Game.roll(3);
           Game.roll(3);
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)3);
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)3);
           
         
           Assert.Equal(13,  Game.score());
+
+        }
+
+        [Fact]
+        public void When_PlayerGetsScoreUnder63_PlayerGetsTheSumOnly()
+        {
+
+          YatzyKata Game = new YatzyKata();
+
+        for(int i = 1; i <= 5; i++){
+          Game.roll(i);
+        }
+        Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
+        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)1);
+
+        for(int i = 1; i <=  5; i++){
+          Game.roll(i);
+        }
+        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)2);
+
+        for(int i = 1; i <= 5; i++){
+          Game.roll(i);
+        }
+        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)3);
+
+        for(int i = 1; i <= 5; i++){
+          Game.roll(i);
+        }
+        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)4);
+
+        for(int i = 1; i <= 5; i++){
+          Game.roll(i);
+        }
+        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)5);
+
+        for(int i = 2; i <= 6; i++){
+        Game.roll(i);
+        }
+        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)6);
+          
+          Assert.Equal(21,  Game.score());
 
         }
 
@@ -126,8 +165,8 @@ namespace Katas_TDD.YatzyKata
           Game.roll(5);
           Game.roll(5);
 
-          Game.eChoosenQueue = new Queue<YatzyKata.eChoosen>();
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)5);
+          Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)5);
  //15 5
 
 
@@ -138,7 +177,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(4);
           Game.roll(5); //8 4
        
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)4);
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)4);
 
           //3
           Game.roll(6); 
@@ -146,7 +185,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(6);
           Game.roll(6);
           Game.roll(5); //24 6
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)6);
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)6);
 
 
 
@@ -156,7 +195,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(3);
           Game.roll(3);
           Game.roll(3); //12 3
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)3);
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)3);
 
 
           //5
@@ -165,7 +204,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(4);
           Game.roll(3);
           Game.roll(5); //2 1
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)1);
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)1);
 
 
           //6
@@ -174,13 +213,10 @@ namespace Katas_TDD.YatzyKata
           Game.roll(3);
           Game.roll(3);
           Game.roll(5); //2 2
-          Game.eChoosenQueue.Enqueue((YatzyKata.eChoosen)2);
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)2);
 
           Assert.Equal(98,  Game.score());
 
         }
-
-
-
     }
 }
