@@ -1,4 +1,6 @@
 
+using System.Globalization;
+using System.Linq.Expressions;
 using System.Security.Cryptography;
 
 namespace Katas_TDD.YatzyKata
@@ -83,6 +85,16 @@ namespace Katas_TDD.YatzyKata
             if((int)eLowerSectionChoosenQueue.Peek() == 9){
 
               FullHouse(ScoreList, counter, counter+5, ref result);
+            }
+
+            if((int)eLowerSectionChoosenQueue.Peek() == 10){
+
+              SmallStraight(ScoreList, counter, counter+5, ref result);
+            }
+
+            if((int)eLowerSectionChoosenQueue.Peek() == 11){
+
+              LangStraight(ScoreList, counter, counter+5, ref result);
             }
 
            counter += 5;
@@ -196,6 +208,63 @@ namespace Katas_TDD.YatzyKata
      result += 25;
     
  }
+
+private void SmallStraight(int[] arr, int from, int to, ref int  result){
+    int key = arr[0];
+    int count = 0;
+    int[] newArr = new int[3];
+
+    for(int i = 0; i < 3; i++){
+         newArr[i] = 0;
+    }
+
+    SortDiceValues(ref arr, from, to);
+
+    for(int i = from; i < to; i++){
+       
+      if(key == (arr[i+1]-1)){
+           
+           newArr[i] = arr[i+1];
+           count++;
+      }
+      else{
+        key = arr[i+1];
+        count = 0;
+      }
+
+    }
+
+    
+    
+}
+
+private void LangStraight(int[] arr, int from, int to, ref int  result){
+    
+    
+}
+
+private void SortDiceValues(ref int[] arr, int from, int to){
+   int key = 0;
+
+  for(int i = from + 1; i > to; i++){
+      
+      key = arr[i];
+
+    for(int j = i -1; i >= from; --j){
+
+      if(arr[j] > key) arr[j+1] = arr[j];
+
+      else break;
+    }
+
+    arr[i] = key;
+
+
+  }
+
+
+}
+
 
 
 }

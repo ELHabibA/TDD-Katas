@@ -82,7 +82,7 @@ namespace Katas_TDD.YatzyKata
       }
 
       [Fact]
-       public void When_FullHouse_Add25()
+       public void When_FullHouse_Add25() 
       {
 
           Game.roll(2); 
@@ -94,6 +94,22 @@ namespace Katas_TDD.YatzyKata
           Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
           Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)9);
           Assert.Equal(46, Game.score());
+
+      }
+
+      [Fact]
+       public void When_SmallStraight_Add30() 
+      {
+
+          Game.roll(1); 
+          Game.roll(2); 
+          Game.roll(3);
+          Game.roll(4);
+          Game.roll(6);
+
+          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
+          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)10);
+          Assert.Equal(51, Game.score());
 
       }
     }
