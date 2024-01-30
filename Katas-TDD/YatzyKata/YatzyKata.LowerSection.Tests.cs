@@ -112,6 +112,81 @@ namespace Katas_TDD.YatzyKata
           Assert.Equal(51, Game.score());
 
       }
+
+      [Fact]
+       public void When_LangStraight_Add50() 
+      {
+
+          Game.roll(1); 
+          Game.roll(2); 
+          Game.roll(3);
+          Game.roll(4);
+          Game.roll(5);
+
+          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
+          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)11);
+          Assert.Equal(61, Game.score());
+
+      }
+
+      [Fact]
+       public void When_Yathzee_Add40() 
+      {
+
+          Game.roll(4); 
+          Game.roll(4); 
+          Game.roll(4);
+          Game.roll(4);
+          Game.roll(4);
+
+          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
+          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)12);
+          Assert.Equal(61, Game.score());
+
+      }
+
+      [Fact]
+       public void When_Chance_AddTotaldice() 
+      {
+
+          Game.roll(4); 
+          Game.roll(4); 
+          Game.roll(2);
+          Game.roll(5);
+          Game.roll(3);
+
+          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
+          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)13);
+          Assert.Equal(39, Game.score());
+
+      }
+
+      [Fact]
+       public void When_BoxIsAlreadyChoosed_DoNOTAddToResult() 
+      {
+
+           Game.roll(4); 
+          Game.roll(4); 
+          Game.roll(2);
+          Game.roll(5);
+          Game.roll(3);
+
+          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
+          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)13);
+
+
+          Game.roll(2); 
+          Game.roll(1); 
+          Game.roll(1);
+          Game.roll(3);
+          Game.roll(2);
+
+          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)13);
+          Assert.Equal(41, Game.score());
+
+
+      }
     }
+
 
 }
