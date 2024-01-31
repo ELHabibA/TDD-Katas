@@ -19,7 +19,7 @@ The TDD Katas Repository contains solutions for Katas using Test-Driven Developm
         - `BowlingGameKata.cs` - Implementation
         - `BowlingGameKata.Tests.cs` - Unit tests
 
-  
+          
 2. **Yatzy Kata**
     - [Link to Kata Description](https://kata-log.rocks/yahtzee-kata)
     - Folder: `YatzyKata`
@@ -27,4 +27,14 @@ The TDD Katas Repository contains solutions for Katas using Test-Driven Developm
         - `Yatzy.cs` - Implementation
         - `YatzyKataUpperSection.Tests.cs` - Unit tests
         - `YatzyKataLowerSection.Tests.cs` - Unit tests
+
+
+3. **Tennis Kata**
+    - [Link to Kata Description](https://kata-log.rocks/tennis-kata)
+    - Folder: `TennisKata`
+    - Files:
+        - `TennisGame.cs` - Implementation
+        - `TennisGame.Tests.cs` - Unit tests
+
+    
 
