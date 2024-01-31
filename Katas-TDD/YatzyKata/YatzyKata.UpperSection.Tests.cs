@@ -218,5 +218,36 @@ namespace Katas_TDD.YatzyKata
           Assert.Equal(98,  Game.score());
 
         }
+
+
+        [Fact]
+        public void When_PlayerChoseDiceToSum_IfHeChoosesSameDiceAgainIgnoreIt()
+        {
+
+          YatzyKata Game = new YatzyKata();
+
+        //1
+          Game.roll(2); 
+          Game.roll(2); 
+          Game.roll(3);
+          Game.roll(3);
+          Game.roll(5);
+
+          Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)2);
+          
+
+        //2
+          Game.roll(2);
+          Game.roll(2); 
+          Game.roll(2);
+          Game.roll(3);
+          Game.roll(3);
+          Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)2);
+          
+        
+          Assert.Equal(4,  Game.score());
+
+        }
     }
 }

@@ -10,7 +10,6 @@ namespace Katas_TDD.YatzyKata
     public Queue<eUpperSectionChoosen>? eUpperSectionChoosenQueue = null; 
     public Queue<eLowerSectionChoosen>? eLowerSectionChoosenQueue = null; 
     private int counter1 = 0;
-
     private int passedBox = 0;
 
     public enum eUpperSectionChoosen {
@@ -26,109 +25,160 @@ namespace Katas_TDD.YatzyKata
 
     
 
-        public void roll(int points)
-        {
-         
-          ScoreList[counter1] = points;
-          counter1++;
-        }
+public void roll(int points)
+{
+  
+  ScoreList[counter1] = points;
+  counter1++;
+}
 
-        public int score(){
+public int score(){
 
-           int result = 0;
-           int counter = 0;
+    int result = 0;
+    int counter = 0;
+  if(eUpperSectionChoosenQueue == null){
+
+  return -1;
+
+  }
           
-          if(eUpperSectionChoosenQueue == null){
-              
-              return -1;
+  ProcessUpperSectionChoice(ref result, ref counter);
 
-          }
-         
-         while(counter < 30){
-
-            if (eUpperSectionChoosenQueue.Count == 0)
-            {
-                break; 
-            }
-
-          for(int i = 0; i < 5; i++) {
-
-            if(ScoreList[counter + i] == (int)eUpperSectionChoosenQueue.Peek()){
-
-              result += ScoreList[counter + i];
-
-              
-            }
-               
-           }
-
-           counter += 5;
-           eUpperSectionChoosenQueue.Dequeue();
-         }
-
-        if(result >= 63){   //Bonus
-
-            result += 35;
-        }
-
-         while(counter < ScoreList.Length){
-
-            if (eLowerSectionChoosenQueue == null || eLowerSectionChoosenQueue.Count == 0)
-            {
-                break;
-            }
-
-
-            if((int)eLowerSectionChoosenQueue.Peek() == 7){
-
-              ThreeOfAKind(ScoreList, counter, counter+5, ref result);
-              passedBox += (int)eChoosedBox.threeOfaKind;
-            }
-
-            if((int)eLowerSectionChoosenQueue.Peek() == 8){
-
-              FourOfAKind(ScoreList, counter, counter+5, ref result);
-              passedBox += (int)eChoosedBox.fourOfaKind;
-            }
-
-            if((int)eLowerSectionChoosenQueue.Peek() == 9){
-
-              FullHouse(ScoreList, counter, counter+5, ref result);
-              passedBox += (int)eChoosedBox.fullHouse;
-            }
-
-            if((int)eLowerSectionChoosenQueue.Peek() == 10){
-
-              SmallStraight(ScoreList, counter, counter+5, ref result);
-              passedBox += (int)eChoosedBox.smStraight;
-            }
-
-            if((int)eLowerSectionChoosenQueue.Peek() == 11){
-
-              LangStraight(ScoreList, counter, counter+5, ref result);
-              passedBox += (int)eChoosedBox.lgStraight;
-            }
-
-            if((int)eLowerSectionChoosenQueue.Peek() == 12){
-
-              yahtzee(ScoreList, counter, counter+5, ref result);
-              passedBox += (int)eChoosedBox.yahtzee;
-            }
-
-            if((int)eLowerSectionChoosenQueue.Peek() == 13){
-
-              Chance(ScoreList, counter, counter+5, ref result);
-              passedBox += (int)eChoosedBox.chance;
-            }
-
-
-           counter += 5;
-           eLowerSectionChoosenQueue.Dequeue();
-         }
+  ProcessLowerSectionChoice(ref result, ref counter);
 
       
-          return result;
+  return result;
+
+}
+
+private void AddSimilarDice(ref int result, ref int counter, int dice){
+
+  if(eUpperSectionChoosenQueue == null){
+    
+    return;
+
+  }
+
+  for(int i = 0; i < 5; i++) {
+
+    if(ScoreList[counter + i] == dice){
+
+      result += ScoreList[counter + i];
+
+    }
+        
+}
+
+     counter += 5;
+     eUpperSectionChoosenQueue.Dequeue();
+
+}
+
+private void ProcessUpperSectionChoice(ref int result, ref int counter){
+
+  if(eUpperSectionChoosenQueue == null){
+    
+    return;
+
+  }
+
+    while(counter < 30 && eUpperSectionChoosenQueue.Count > 0){
+
+    switch ((int)eUpperSectionChoosenQueue.Peek())
+      {
+                case 1:
+                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    passedBox += (int)eChoosedBox.ones;
+                    break;
+                case 2:
+                    if((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(2, 2), 2)) != 2){
+                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    passedBox += (int)eChoosedBox.twos;
+                    }
+                    break;
+                case 3:
+                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    passedBox += (int)eChoosedBox.threes;
+                    break;
+                case 4:
+                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    passedBox += (int)eChoosedBox.fours;
+                    break;
+                case 5:
+                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    passedBox += (int)eChoosedBox.five;
+                    break;
+                case 6:
+                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    passedBox += (int)eChoosedBox.six;
+                    break;
+                default:
+                break;
+    }
+
+
+    }
+      
+    if(result >= 63){   //Bonus
+
+        result += 35;
+    }
+
+}
+
+public void ProcessLowerSectionChoice(ref int result, ref int counter)
+{
+
+    while (counter < ScoreList.Length)
+    {
+        if (eLowerSectionChoosenQueue == null || eLowerSectionChoosenQueue.Count == 0)
+        {
+            break;
         }
+
+        switch ((int)eLowerSectionChoosenQueue.Peek())
+        {
+            case 7:
+                ThreeOfAKind(ScoreList, counter, counter + 5, ref result);
+                passedBox += (int)eChoosedBox.threeOfaKind;
+                break;
+
+            case 8:
+                FourOfAKind(ScoreList, counter, counter + 5, ref result);
+                passedBox += (int)eChoosedBox.fourOfaKind;
+                break;
+
+            case 9:
+                FullHouse(ScoreList, counter, counter + 5, ref result);
+                passedBox += (int)eChoosedBox.fullHouse;
+                break;
+
+            case 10:
+                SmallStraight(ScoreList, counter, counter + 5, ref result);
+                passedBox += (int)eChoosedBox.smStraight;
+                break;
+
+            case 11:
+                LangStraight(ScoreList, counter, counter + 5, ref result);
+                passedBox += (int)eChoosedBox.lgStraight;
+                break;
+
+            case 12:
+                yahtzee(ScoreList, counter, counter + 5, ref result);
+                passedBox += (int)eChoosedBox.yahtzee;
+                break;
+
+            case 13:
+                Chance(ScoreList, counter, counter + 5, ref result);
+                passedBox += (int)eChoosedBox.chance;
+                break;
+        }
+
+        counter += 5;
+        eLowerSectionChoosenQueue.Dequeue();
+    }
+}
+
 
  private void ThreeOfAKind(int[] arr, int from, int to, ref int  result){
   
