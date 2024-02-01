@@ -51,26 +51,65 @@ public int score(){
 
 }
 
-private void AddSimilarDice(ref int result, ref int counter, int dice){
+private void AddSimilarDice(ref int result, int counter, int dice){
+  
+  bool IsBoxAvailable = CheckBoxAvailability();
 
-  if(eUpperSectionChoosenQueue == null){
-    
-    return;
+ if(IsBoxAvailable){
 
-  }
-
-  for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < 5; i++) {
 
     if(ScoreList[counter + i] == dice){
 
       result += ScoreList[counter + i];
 
     }
+
+ }
         
 }
 
-     counter += 5;
-     eUpperSectionChoosenQueue.Dequeue();
+}
+
+private bool CheckBoxAvailability(){
+
+    if(eUpperSectionChoosenQueue == null){
+    
+    return false;
+
+    }
+
+    else if ((passedBox & (int)eUpperSectionChoosenQueue.Peek()) == 1 && (int)eUpperSectionChoosenQueue.Peek() == 1)
+    {
+        return false;
+    }
+
+    else if ((passedBox & (int)eUpperSectionChoosenQueue.Peek()) == 2 && (int)eUpperSectionChoosenQueue.Peek() == 2)
+    {
+        return false;
+    }
+
+    else if ((passedBox & 4) == 4 && (int)eUpperSectionChoosenQueue.Peek() == 3)
+    {
+        return false;
+    }
+
+    else if ((passedBox & 8) == 8 && (int)eUpperSectionChoosenQueue.Peek() == 4)
+    {
+        return false;
+    }
+
+    else if ((passedBox & 16) == 6 && (int)eUpperSectionChoosenQueue.Peek() == 5)
+    {
+        return false;
+    }
+
+    else if ((passedBox & 32) == 32 && (int)eUpperSectionChoosenQueue.Peek() == 6)
+    {
+        return false;
+    }
+
+    return true;
 
 }
 
@@ -87,36 +126,33 @@ private void ProcessUpperSectionChoice(ref int result, ref int counter){
     switch ((int)eUpperSectionChoosenQueue.Peek())
       {
                 case 1:
-                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    AddSimilarDice(ref result, counter, (int)eUpperSectionChoosenQueue.Peek());
                     passedBox += (int)eChoosedBox.ones;
                     break;
                 case 2:
-                    if((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(2, 2), 2)) != 2){
-                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    AddSimilarDice(ref result, counter, (int)eUpperSectionChoosenQueue.Peek());
                     passedBox += (int)eChoosedBox.twos;
-                    }
                     break;
                 case 3:
-                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    AddSimilarDice(ref result, counter, (int)eUpperSectionChoosenQueue.Peek());
                     passedBox += (int)eChoosedBox.threes;
                     break;
                 case 4:
-                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    AddSimilarDice(ref result, counter, (int)eUpperSectionChoosenQueue.Peek());
                     passedBox += (int)eChoosedBox.fours;
                     break;
                 case 5:
-                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    AddSimilarDice(ref result, counter, (int)eUpperSectionChoosenQueue.Peek());
                     passedBox += (int)eChoosedBox.five;
                     break;
                 case 6:
-                    AddSimilarDice(ref result, ref counter, (int)eUpperSectionChoosenQueue.Peek());
+                    AddSimilarDice(ref result, counter, (int)eUpperSectionChoosenQueue.Peek());
                     passedBox += (int)eChoosedBox.six;
                     break;
-                default:
-                break;
     }
 
-
+     counter += 5;
+     eUpperSectionChoosenQueue.Dequeue();
     }
       
     if(result >= 63){   //Bonus
@@ -182,16 +218,13 @@ public void ProcessLowerSectionChoice(ref int result, ref int counter)
 
  private void ThreeOfAKind(int[] arr, int from, int to, ref int  result){
   
-  if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(64, 2), 2)) == 64)
+  if ((passedBox & 64) == 64)
   {
       return;
   }
+
     int[] tmparr = new int[5];
     int count = 0;
-
-    for(int i = 0; i < 5; i++){
-         tmparr[i] = 0;
-    }
 
     for(int i = from; i < to; i++){
       
@@ -221,16 +254,13 @@ public void ProcessLowerSectionChoice(ref int result, ref int counter)
 
   private void FourOfAKind(int[] arr, int from, int to, ref int  result){
 
-  if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(128, 2), 2)) == 128)
+  if ((passedBox & 128) == 128)
   {
       return;
   }
+
     int[] tmparr = new int[5];
     int count = 0;
-
-    for(int i = 0; i < 5; i++){
-         tmparr[i] = 0;
-    }
 
     for(int i = from; i < to; i++){
       
@@ -261,11 +291,11 @@ public void ProcessLowerSectionChoice(ref int result, ref int counter)
 
  private void FullHouse(int[] arr, int from, int to, ref int  result){
 
-  if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(256, 2), 2)) == 256)
+  if ((passedBox & 256) == 256)
   {
       return;
   }
-    
+
     string str1 = "";
     string str2 = "";
 
@@ -300,8 +330,8 @@ public void ProcessLowerSectionChoice(ref int result, ref int counter)
  }
 
 private void SmallStraight(int[] arr, int from, int to, ref int  result){
-
-  if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(512, 2), 2)) == 512)
+  
+  if ((passedBox & 512) == 512)
   {
       return;
   }
@@ -338,10 +368,10 @@ private void SmallStraight(int[] arr, int from, int to, ref int  result){
 }
 
 private void LangStraight(int[] arr, int from, int to, ref int  result){
-
-  if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(1024, 2), 2)) == 1024)
+  
+  if ((passedBox & 1024) == 1024)
   {
-    return;
+      return;
   }
 
     
@@ -398,10 +428,11 @@ private int[] SortDiceValues(int[] arr, int from, int to){
 
 private void yahtzee(int[] arr, int from, int to, ref int  result){
 
-if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(2048, 2), 2)) == 2048)
+if ((passedBox & 2048) == 2048)
 {
     return;
 }
+
 
 
   for(int i = from; i > to; i++){
@@ -418,7 +449,7 @@ if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Conver
 
 private void Chance(int[] arr, int from, int to, ref int  result){
 
-if ((Convert.ToInt32(Convert.ToString(passedBox, 2), 2) & Convert.ToInt32(Convert.ToString(4096, 2), 2)) == 4096)
+if ((passedBox & 4096) == 4096)
 {
     return;
 }
