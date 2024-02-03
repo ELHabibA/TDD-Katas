@@ -1,6 +1,6 @@
 # TDD Katas 
 
-The TDD Katas Repository contains solutions for Katas using Test-Driven Development (TDD) in C# and xUnit. Each kata is organized into its own folder, with separate classes for tests and the actual implementation.
+The TDD Katas Repository contains my solutions for Katas using Test-Driven Development (TDD) in C# and xUnit. Each kata is organized into its own folder, with separate classes for tests and the actual implementation.
 
 ## Katas Included:
 
