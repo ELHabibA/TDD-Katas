@@ -11,33 +11,34 @@ namespace Katas_TDD.YatzyKata
         for(int i = 1; i <= 5; i++){
           Game.roll(i);
         }
-        Game.eUpperSectionChoosenQueue = new Queue<YatzyKata.eUpperSectionChoosen>();
-        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)1);
+        Game.ChooseUpperSectionBox(1);
+
 
         for(int i = 1; i <=  5; i++){
           Game.roll(i);
         }
-        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)2);
+        Game.ChooseUpperSectionBox(2);
+
 
         for(int i = 1; i <= 5; i++){
           Game.roll(i);
         }
-        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)3);
+          Game.ChooseUpperSectionBox(3);
 
         for(int i = 1; i <= 5; i++){
           Game.roll(i);
         }
-        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)4);
+          Game.ChooseUpperSectionBox(4);
 
         for(int i = 1; i <= 5; i++){
           Game.roll(i);
         }
-        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)5);
+          Game.ChooseUpperSectionBox(5);
 
         for(int i = 2; i <= 6; i++){
         Game.roll(i);
         }
-        Game.eUpperSectionChoosenQueue.Enqueue((YatzyKata.eUpperSectionChoosen)6);
+          Game.ChooseUpperSectionBox(6);
 
       }
 
@@ -58,9 +59,8 @@ namespace Katas_TDD.YatzyKata
           Game.roll(5);
           Game.roll(5);
           Game.roll(5);
+          Game.ChooseLowerSectionBox(7);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)7);
           Assert.Equal(36, Game.score());
 
       }
@@ -75,8 +75,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(5);
           Game.roll(5);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)8);
+          Game.ChooseLowerSectionBox(8);
           Assert.Equal(41, Game.score());
 
       }
@@ -91,8 +90,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(5);
           Game.roll(5);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)9);
+          Game.ChooseLowerSectionBox(9);
           Assert.Equal(46, Game.score());
 
       }
@@ -107,8 +105,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(4);
           Game.roll(6);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)10);
+          Game.ChooseLowerSectionBox(10);
           Assert.Equal(51, Game.score());
 
       }
@@ -123,8 +120,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(4);
           Game.roll(5);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)11);
+          Game.ChooseLowerSectionBox(11);
           Assert.Equal(61, Game.score());
 
       }
@@ -139,8 +135,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(4);
           Game.roll(4);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)12);
+          Game.ChooseLowerSectionBox(12);
           Assert.Equal(61, Game.score());
 
       }
@@ -155,8 +150,7 @@ namespace Katas_TDD.YatzyKata
           Game.roll(5);
           Game.roll(3);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)13);
+          Game.ChooseLowerSectionBox(13);
           Assert.Equal(39, Game.score());
 
       }
@@ -165,14 +159,13 @@ namespace Katas_TDD.YatzyKata
        public void When_BoxIsAlreadyChoosed_DoNOTAddToResult() 
       {
 
-           Game.roll(4); 
+          Game.roll(4); 
           Game.roll(4); 
           Game.roll(2);
           Game.roll(5);
           Game.roll(3);
 
-          Game.eLowerSectionChoosenQueue = new Queue<YatzyKata.eLowerSectionChoosen>();
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)13);
+          Game.ChooseLowerSectionBox(13);
 
 
           Game.roll(2); 
@@ -181,7 +174,8 @@ namespace Katas_TDD.YatzyKata
           Game.roll(3);
           Game.roll(2);
 
-          Game.eLowerSectionChoosenQueue.Enqueue((YatzyKata.eLowerSectionChoosen)13);
+          Game.ChooseLowerSectionBox(13);
+          
           Assert.Equal(41, Game.score());
 
 

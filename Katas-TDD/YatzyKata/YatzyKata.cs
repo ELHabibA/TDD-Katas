@@ -7,9 +7,8 @@ namespace Katas_TDD.YatzyKata
 {
        
     private int[]  ScoreList = new int[65];
-    public Queue<eUpperSectionChoosen>? eUpperSectionChoosenQueue = null; 
-    public Queue<eLowerSectionChoosen>? eLowerSectionChoosenQueue = null; 
-    private int counter1 = 0;
+    private Queue<eUpperSectionChoosen>? eUpperSectionChoosenQueue = new Queue<eUpperSectionChoosen>();
+    private Queue<eLowerSectionChoosen>? eLowerSectionChoosenQueue = new Queue<eLowerSectionChoosen>();
     private int passedBox = 0;
 
     public enum eUpperSectionChoosen {
@@ -23,7 +22,15 @@ namespace Katas_TDD.YatzyKata
      ones = 1, twos = 2, threes = 4, fours = 8, five = 16, six = 32, threeOfaKind = 64, fourOfaKind = 128, fullHouse= 256, smStraight = 512, lgStraight = 1024, yahtzee = 2048, chance = 4096
     }
 
-    
+private int counter1 = 0;
+
+public void ChooseUpperSectionBox(int box) {
+    eUpperSectionChoosenQueue!.Enqueue((eUpperSectionChoosen)box);
+}  
+
+public void ChooseLowerSectionBox(int box) {
+    eLowerSectionChoosenQueue!.Enqueue((eLowerSectionChoosen)box);
+}  
 
 public void roll(int points)
 {
@@ -36,7 +43,7 @@ public int score(){
 
     int result = 0;
     int counter = 0;
-  if(eUpperSectionChoosenQueue == null){
+  if(eUpperSectionChoosenQueue!.Count == 0){
 
   return -1;
 
