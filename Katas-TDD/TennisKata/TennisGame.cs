@@ -8,8 +8,8 @@ class TennisGame
     private string? player1 = "player1";
     private string? player2 = "player2";
 
-    private int[] player1Sets = new int[3];
-    private int[] player2Sets = new int[3];
+    private int[] player1Sets = new int[4];
+    private int[] player2Sets = new int[4];
     private int player1points = 0;
     private int player2points = 0;
     private  int counter = 0;
@@ -25,7 +25,7 @@ public void WonPoint(string winner){
                 player1points = 0;
                 player2points = 0;
 
-                AddOnePointToplayer1Sets();
+                AddOnePointToSet(ref player1Sets, ref player2Sets);
                 return;
 
              }
@@ -34,7 +34,7 @@ public void WonPoint(string winner){
 
                 player1points = 0;
                 player2points = 0;
-                AddOnePointToplayer1Sets();
+                AddOnePointToSet(ref player1Sets, ref player2Sets);
                 return;
 
              }
@@ -64,7 +64,7 @@ public void WonPoint(string winner){
 
                 player1points = 0;
                 player2points = 0;
-                AddOnePointToplayer2Sets();
+                AddOnePointToSet(ref player2Sets, ref player1Sets);
                 return;
 
             }
@@ -73,7 +73,8 @@ public void WonPoint(string winner){
 
                 player1points = 0;
                 player2points = 0;
-                AddOnePointToplayer2Sets();
+                 AddOnePointToSet(ref player2Sets, ref player1Sets);
+
                 return;
 
             }
@@ -98,7 +99,6 @@ public void WonPoint(string winner){
 
 
 }
-
 
 public string Score(){
       
@@ -128,44 +128,34 @@ public string Score(){
 }
 
 
-private void AddOnePointToplayer1Sets(){
+private void AddOnePointToSet(ref int[] winner, ref int[] looser){
 
-    if (player1Sets[counter] < 6 || player2Sets[counter] >= 5)
+    if (winner[counter] < 6 || looser[counter] == 5 || looser[counter] == 6)
     {
-        if (player1Sets[counter] == 7)
+        if (winner[counter] == 7)
         {
-            counter = 1;
+            counter += 1;
+             if (counter > 2)
+                {
+                    counter = 2;
+                    return;
+                }
         }
-        player1Sets[counter] += 1;
+        winner[counter] += 1;
     }
 
-    else if (player1Sets[counter] == 6 && player2Sets[counter] < 5)
+    else if (winner[counter] == 6 && looser[counter] < 5)
     {
-        counter = 1;
-        player1Sets[counter] += 1;
+        counter += 1;
+         if (counter > 2)
+            {
+                counter = 2;
+                return;
+            }
+        winner[counter] += 1;
     }
 
     
-}
-
-
-private void AddOnePointToplayer2Sets(){
-
-
-    if (player2Sets[counter] < 6 || player1Sets[counter] >= 5)
-    {
-         if (player2Sets[counter] == 7)
-        {
-            counter = 1;
-        }
-        player2Sets[counter] += 1;
-    }
-
-    else if (player2Sets[counter] == 6 && player1Sets[counter] < 5)
-    {
-        counter = 1;
-        player2Sets[counter] += 1;
-    }
 }
   
 }

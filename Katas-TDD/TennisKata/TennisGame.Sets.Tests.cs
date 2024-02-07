@@ -139,7 +139,34 @@ public class TennisGameSetsTests
         Game.WonPoint("player1");
     }
 
-      Assert.Equal("7-6 | 6-0 | 2-0 || 0-0", Game.Score());
+      Assert.Equal("6-4 | 6-0 | 2-0 || 0-0", Game.Score());
+
+  }
+
+
+  [Fact]
+  public void When_ThreeSetsisDone_GameIsFinished(){
+    
+    for (int i = 0; i < 40; i++)
+    {
+        Game.WonPoint("player1");
+    }
+    for (int i = 0; i < 12; i++)
+    {
+        Game.WonPoint("player1");
+    }
+
+    for (int i = 0; i < 8; i++)
+    {
+        Game.WonPoint("player2");
+    }
+
+    for (int i = 0; i < 8; i++)
+    {
+        Game.WonPoint("player1");
+    }
+
+      Assert.Equal("6-4 | 6-0 | 6-2 || 0-0", Game.Score());
 
   }
 
