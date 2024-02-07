@@ -11,7 +11,7 @@ public class TennisGameTests
 
   Game.WonPoint(winner);
 
-  Assert.Equal("15-0", Game.Score());
+  Assert.Equal("0-0 || 15-0", Game.Score());
 
   }
 
@@ -23,7 +23,7 @@ public class TennisGameTests
 
   Game.WonPoint(winner);
 
-  Assert.Equal("0-15", Game.Score());
+  Assert.Equal("0-0 || 0-15", Game.Score());
 
   }
 
@@ -36,7 +36,7 @@ public class TennisGameTests
   Game.WonPoint(winner1);
   Game.WonPoint(winner2);
 
-  Assert.Equal("15-15", Game.Score());
+  Assert.Equal("0-0 || 15-15", Game.Score());
 
   }
 
@@ -52,7 +52,7 @@ public class TennisGameTests
   Game.WonPoint(winner2);
   Game.WonPoint(winner2);
 
-  Assert.Equal("40-30", Game.Score());
+  Assert.Equal("0-0 || 40-30", Game.Score());
 
   }
 
@@ -70,7 +70,7 @@ public class TennisGameTests
   Game.WonPoint(winner2);
   Game.WonPoint(winner1);
 
-  Assert.Equal("50-40", Game.Score());
+  Assert.Equal("0-0 || 50-40", Game.Score());
 
   }
 
@@ -89,7 +89,27 @@ public class TennisGameTests
   Game.WonPoint(winner1);
   Game.WonPoint(winner2);
 
-  Assert.Equal("40-40", Game.Score());
+  Assert.Equal("0-0 || 40-40", Game.Score());
+
+  }
+
+  [Theory]
+  [InlineData("player1", "player2")]
+  public void When_Player1Has50andPlayer2Has40_AndPlayer1WinsNextPoint_Player1WinsTheFirstPointInTheSet(string winner1, string winner2){
+
+  var Game = new TennisGame();
+
+  Game.WonPoint(winner1);
+  Game.WonPoint(winner1);
+  Game.WonPoint(winner1);
+  Game.WonPoint(winner2);
+  Game.WonPoint(winner2);
+  Game.WonPoint(winner2);
+  Game.WonPoint(winner1);
+  Game.WonPoint(winner1);
+  
+
+  Assert.Equal("1-0 || 0-0", Game.Score());
 
   }
 
