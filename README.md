@@ -35,6 +35,7 @@ The TDD Katas Repository contains my solutions for Katas using Test-Driven Devel
     - Files:
         - `TennisGame.cs` - Implementation
         - `TennisGame.Tests.cs` - Unit tests
+        - `TennisGame.Sets.Tests.cs` - Unit tests
 
     
 
