@@ -29,13 +29,21 @@ The TDD Katas Repository contains my solutions for Katas using Test-Driven Devel
         - `YatzyKataLowerSection.Tests.cs` - Unit tests
 
 
-3. **Tennis Kata**
+4. **Tennis Kata**
     - [Link to Tennis Kata Description](https://kata-log.rocks/tennis-kata)
     - Folder: `TennisKata`
     - Files:
         - `TennisGame.cs` - Implementation
         - `TennisGame.Tests.cs` - Unit tests
         - `TennisGame.Sets.Tests.cs` - Unit tests
+
+
+5. **Fizz Buzz Kata**
+    - [Link to Fizz Buzz Kata Description]([https://kata-log.rocks/tennis-kata](https://kata-log.rocks/fizz-buzz-kata))
+    - Folder: `FizzBuzzKata`
+    - Files:
+        - `FizzBuzzKata.cs` - Implementation
+        - `FizzBuzzKata.Tests.cs` - Unit tests
 
     
 
