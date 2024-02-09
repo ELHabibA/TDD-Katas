@@ -39,7 +39,7 @@ The TDD Katas Repository contains my solutions for Katas using Test-Driven Devel
 
 
 5. **Fizz Buzz Kata**
-    - [Link to Fizz Buzz Kata Description]([https://kata-log.rocks/tennis-kata](https://kata-log.rocks/fizz-buzz-kata))
+    - [Link to Fizz Buzz Kata Description](https://kata-log.rocks/fizz-buzz-kata)
     - Folder: `FizzBuzzKata`
     - Files:
         - `FizzBuzzKata.cs` - Implementation
