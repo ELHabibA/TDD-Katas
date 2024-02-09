@@ -7,7 +7,7 @@ class FizzBuzzKata
 
     if (IsFizzBuzz(num))
     {
-       return "FizzBuzz";
+      return "FizzBuzz";
     }
 
     else if (IsFizz(num))
