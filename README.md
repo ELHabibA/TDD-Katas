@@ -1,6 +1,6 @@
 # TDD Katas 
 
-The TDD Katas Repository contains my solutions for Katas using Test-Driven Development (TDD) in C# and xUnit. Each kata is organized into its own folder, with separate classes for tests and the actual implementation.
+The TDD Katas Repository contains my solutions for Katas using Test-Driven Development (TDD) in C# and xUnit. Each kata is organized into its folder, with separate classes for tests and the actual implementation.
 
 ## Katas Included:
 
@@ -44,6 +44,13 @@ The TDD Katas Repository contains my solutions for Katas using Test-Driven Devel
     - Files:
         - `FizzBuzzKata.cs` - Implementation
         - `FizzBuzzKata.Tests.cs` - Unit tests
+
+5. **Roman Numerals Kata**
+    - [Link to Fizz Buzz Kata Description](https://kata-log.rocks/roman-numerals-kata)
+    - Folder: `RomanNumeralsKata`
+    - Files:
+        - `RomanNumeralsKata.cs` - Implementation
+        - `RomanNumeralsKata.Tests.cs` - Unit tests
 
     
 
