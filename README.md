@@ -46,7 +46,7 @@ The TDD Katas Repository contains my solutions for Katas using Test-Driven Devel
         - `FizzBuzzKata.Tests.cs` - Unit tests
 
 5. **Roman Numerals Kata**
-    - [Link to Fizz Buzz Kata Description](https://kata-log.rocks/roman-numerals-kata)
+    - [Link to Roman Numerals Kata Description](https://kata-log.rocks/roman-numerals-kata)
     - Folder: `RomanNumeralsKata`
     - Files:
         - `RomanNumeralsKata.cs` - Implementation
