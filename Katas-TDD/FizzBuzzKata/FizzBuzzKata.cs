@@ -3,24 +3,20 @@ class FizzBuzzKata
 
 
   public string Convert(int num){
-    
+
 
     if (IsFizzBuzz(num))
-    {
       return "FizzBuzz";
-    }
 
     else if (IsFizz(num))
-    {
       return "Fizz";
-    }
-
+      
     else if (IsBuzz(num))
-    {
       return "Buzz";
-    }
-
-    return num.ToString();
+    
+    else
+      return num.ToString();
+    
 
   }
 
@@ -28,7 +24,6 @@ class FizzBuzzKata
 
     return (num % 3 == 0) && (num % 5 == 0);
   }
-
   private bool IsFizz(int num){
 
     return (num % 3 == 0);
