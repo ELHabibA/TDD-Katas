@@ -1,37 +1,27 @@
 
 
-
-
 public class RomanNumeralsKata
 {
-
-
-
+    
 
     public string ConvertToRoman(int num)
     {
 
-      string result = "";
-      int k = 0;
-      string[] romans = {"I", "X"};
+      int[] numbers = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+      string[] romanNumerals = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
-      for (int i = num; i > 0; --i)
-      {
-            if (i >= 10)
+        string result = "";
+        int remainingValue = num;
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            while (remainingValue >= numbers[i])
             {
-              k = 1;
-              result += romans[k];
-              i -= 9;
+                result += romanNumerals[i];
+                remainingValue -= numbers[i];
             }
-            else{
-            
-            k = 0;
-            result += romans[k];
+        }
 
-            }
-      }
-
-
-      return result;
+        return result;
     }
 }

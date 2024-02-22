@@ -4,10 +4,13 @@ namespace Katas_TDD.YatzyKata
     public class YatzyKataLowerSectionTests
     {
 
-      YatzyKata Game = new YatzyKata();
+      private readonly YatzyKata Game;
       
       public YatzyKataLowerSectionTests()
       {
+
+        Game = new YatzyKata();
+
         for(int i = 1; i <= 5; i++){
           Game.roll(i);
         }

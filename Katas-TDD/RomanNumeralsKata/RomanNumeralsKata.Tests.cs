@@ -1,73 +1,39 @@
-
-
-
 public class RomanNumeralsKataTests
 {
+    private readonly RomanNumeralsKata Roman;
 
-  [Fact]
-  public void When_NumIs1()
-  {
-    var Roman = new RomanNumeralsKata();
-  
-    string expectedRoman = Roman.ConvertToRoman(1);  
-    string actualRoman = "I";
+    public RomanNumeralsKataTests()
+    {
+        Roman = new RomanNumeralsKata();
+    }
 
-    Assert.Equal(actualRoman, expectedRoman);
-  }
-
-    [Fact]
-  public void When_NumIs2()
-  {
-    var Roman = new RomanNumeralsKata();
-  
-    string expectedRoman = Roman.ConvertToRoman(2);  
-    string actualRoman = "II";
-
-    Assert.Equal(actualRoman, expectedRoman);
-  }
-
-  [Fact]
-  public void When_NumIs3()
-  {
-    var Roman = new RomanNumeralsKata();
-  
-    string expectedRoman = Roman.ConvertToRoman(3);  
-    string actualRoman = "III";
-
-    Assert.Equal(actualRoman, expectedRoman);
-  }
-
-  [Fact]
-  public void When_NumIs10()
-  {
-    var Roman = new RomanNumeralsKata();
-  
-    string expectedRoman = Roman.ConvertToRoman(10);  
-    string actualRoman = "X";
-
-    Assert.Equal(actualRoman, expectedRoman);
-  }
-
-  [Fact]
-  public void When_NumIs11()
-  {
-    var Roman = new RomanNumeralsKata();
-  
-    string expectedRoman = Roman.ConvertToRoman(11);  
-    string actualRoman = "XI";
-
-    Assert.Equal(actualRoman, expectedRoman);
-  }
-
-  [Fact]
-  public void When_NumIs20()
-  {
-    var Roman = new RomanNumeralsKata();
-  
-    string expectedRoman = Roman.ConvertToRoman(20);  
-    string actualRoman = "XX";
-
-    Assert.Equal(actualRoman, expectedRoman);
-  }
-  
+    [Theory]
+    [InlineData(1, "I")]
+    [InlineData(2, "II")]
+    [InlineData(3, "III")]
+    [InlineData(4, "IV")]
+    [InlineData(5, "V")]
+    [InlineData(9, "IX")]
+    [InlineData(10, "X")]
+    [InlineData(11, "XI")]
+    [InlineData(14, "XIV")]
+    [InlineData(20, "XX")]
+    [InlineData(27, "XXVII")]
+    [InlineData(36, "XXXVI")]
+    [InlineData(39, "XXXIX")]
+    [InlineData(43, "XLIII")]
+    [InlineData(60, "LX")]
+    [InlineData(70, "LXX")]
+    [InlineData(86, "LXXXVI")]
+    [InlineData(99, "XCIX")]
+    [InlineData(350, "CCCL")]
+    [InlineData(430, "CDXXX")]
+    [InlineData(623, "DCXXIII")]
+    [InlineData(1980, "MCMLXXX")]
+    [InlineData(1991, "MCMXCI")]
+    public void ConvertToRoman_ReturnsExpectedResult(int number, string expectedRoman)
+    {
+        string actualRoman = Roman.ConvertToRoman(number);
+        Assert.Equal(expectedRoman, actualRoman);
+    }
 }
