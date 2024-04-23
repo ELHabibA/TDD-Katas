@@ -10,8 +10,6 @@ namespace Katas_TDD.BowlingGameKata
         [Fact]
         public void When_RollZero_TheScoreShouldbeZero()
         {
-
-
             game.roll(0);
 
             Assert.Equal(0, game.score());
@@ -31,7 +29,6 @@ namespace Katas_TDD.BowlingGameKata
         [Fact]
         public void When_Spare_TheScoreAddsPinsknockedDownInTheNextBall()
         {
-
             game.roll(3);
             game.roll(7);
             game.roll(5);
