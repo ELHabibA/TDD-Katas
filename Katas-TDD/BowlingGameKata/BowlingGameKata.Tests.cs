@@ -39,7 +39,6 @@ namespace Katas_TDD.BowlingGameKata
         [Fact]
         public void When_TenInTwoFrames_TheScoreDoesntAdd()
         {
-
             game.roll(2);
             game.roll(7);
             game.roll(3);
@@ -51,11 +50,9 @@ namespace Katas_TDD.BowlingGameKata
         [Fact]
         public void When_Strike_TheScoreAddsPinsknockedDownInTheNextTwoBalls()
         {
-
             game.roll(10);
             game.roll(2);
             game.roll(3);
-
 
             Assert.Equal(20, game.score());
         }
